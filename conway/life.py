@@ -6,12 +6,12 @@ import pygame as pg
 from scipy.signal import convolve2d
 from seeds import Seed
 
-CAPTION = "Conway"
+CAPTION = 'Conway'
 FPS = 30
 CELL_SIZE = 12
 GRID_SIZE = (50, 100)
 CELL_MARGIN = 2
-BACKGROUND_COLOR = pg.Color("darkslategray")
+BACKGROUND_COLOR = pg.Color('darkslategray')
 VISITED_COLOR = [min(chan + 20, 255) for chan in BACKGROUND_COLOR]
 
 BIRTH = tuple({3})
@@ -21,7 +21,7 @@ SEED = Seed.GOSPER
 
 class Cell(object):
     def __init__(self, coords):
-        self.color = pg.Color("tomato")
+        self.color = pg.Color('tomato')
         self.rect = pg.Rect((coords[0] * CELL_SIZE, coords[1] * CELL_SIZE),
                             (CELL_SIZE, CELL_SIZE))
         self.rect.inflate_ip(-CELL_MARGIN, -CELL_MARGIN)
@@ -129,7 +129,7 @@ class App(object):
 
 
 def main():
-    os.environ["SDL_VIDEO_CENTERED"] = "True"
+    os.environ['SDL_VIDEO_CENTERED'] = 'True'
     pg.init()
     size = GRID_SIZE[1] * CELL_SIZE, GRID_SIZE[0] * CELL_SIZE
     pg.display.set_mode(size)
@@ -138,5 +138,5 @@ def main():
     sys.exit()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
