@@ -105,14 +105,17 @@ class App(object):
         elif mouse[2]:
             self.grid.set(coords, 0)
 
+    def step(self):
+        self.grid.update()
+        self.generation += 1
+
     def update(self):
         mouse = pg.mouse.get_pressed()
 
         if any(mouse):
             self.add_delete(mouse)
         elif self.generating:
-            self.grid.update()
-            self.generation += 1
+            self.step()
 
     def render(self):
         pg.display.set_caption(CAPTION + ': Generation ' + str(self.generation))
