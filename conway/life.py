@@ -38,7 +38,9 @@ class Grid(object):
         self.kernel = np.asarray([[1, 1, 1], [1, 0, 1], [1, 1, 1]])
         self.grid = np.zeros(GRID_SIZE, dtype=bool)
         self.age = np.zeros(GRID_SIZE, dtype=int)
+        self.seed()
 
+    def seed(self):
         for c, r in SEED:
             self.grid[r, c] = 1
 
@@ -48,9 +50,7 @@ class Grid(object):
     def reset(self):
         self.grid.fill(0)
         self.age.fill(0)
-
-        for c, r in SEED:
-            self.grid[r, c] = 1
+        self.seed()
 
     def update(self):
         neighbors = convolve2d(self.grid, self.kernel, mode='same', boundary='wrap')
