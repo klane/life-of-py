@@ -129,7 +129,7 @@ class App(object):
         self.grid.draw(self.screen, self.background)
         pg.display.update()
 
-    def main_loop(self):
+    def start(self):
         while not self.done:
             self.event_loop()
             self.update()
@@ -142,7 +142,7 @@ def main():
     pg.init()
     size = GRID_SIZE[1] * CELL_SIZE, GRID_SIZE[0] * CELL_SIZE
     pg.display.set_mode(size)
-    App().main_loop()
+    App().start()
     pg.quit()
     sys.exit()
 
