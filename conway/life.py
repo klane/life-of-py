@@ -4,7 +4,7 @@ import sys
 import numpy as np
 import pygame as pg
 from scipy.signal import convolve2d
-from seeds import *
+from seeds import Seed
 
 CAPTION = "Conway"
 FPS = 30
@@ -16,7 +16,7 @@ VISITED_COLOR = [min(chan + 20, 255) for chan in BACKGROUND_COLOR]
 
 BIRTH = tuple({3})
 SURVIVE = tuple({2, 3})
-SEED = GOSPER
+SEED = Seed.GOSPER
 
 
 class Cell(object):
