@@ -77,6 +77,7 @@ class App(object):
         self.done = False
         self.wrapping = True
         self.generating = False
+        self.generation = 1
 
     def reset(self):
         self.background.fill(BACKGROUND_COLOR)
@@ -108,8 +109,10 @@ class App(object):
             self.add_delete(mouse)
         elif self.generating:
             self.grid.update()
+            self.generation += 1
 
     def render(self):
+        pg.display.set_caption(CAPTION + ': Generation ' + str(self.generation))
         self.screen.blit(self.background, (0, 0))
         self.grid.draw(self.screen, self.background)
         pg.display.update()
@@ -125,7 +128,6 @@ class App(object):
 def main():
     os.environ["SDL_VIDEO_CENTERED"] = "True"
     pg.init()
-    pg.display.set_caption(CAPTION)
     size = GRID_SIZE[1] * CELL_SIZE, GRID_SIZE[0] * CELL_SIZE
     pg.display.set_mode(size)
     App().main_loop()
