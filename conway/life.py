@@ -91,13 +91,16 @@ class App(object):
             if event.type is pg.QUIT:
                 self.done = True
             elif event.type is pg.KEYDOWN:
-                if event.key is pg.K_SPACE:
-                    self.generating = not self.generating
-                elif event.key is pg.K_TAB:
-                    self.generating = False
-                    self.step()
-                elif event.key is pg.K_BACKSPACE:
-                    self.reset()
+                self.handle_key(event.key)
+
+    def handle_key(self, key):
+        if key is pg.K_SPACE:
+            self.generating = not self.generating
+        elif key is pg.K_TAB:
+            self.generating = False
+            self.step()
+        elif key is pg.K_BACKSPACE:
+            self.reset()
 
     def add_delete(self, mouse):
         mouse_pos = pg.mouse.get_pos()
