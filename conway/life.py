@@ -40,8 +40,7 @@ class Grid(object):
         self.age = np.zeros(GRID_SIZE, dtype=int)
 
         for c, r in SEED:
-            self.grid[r, c] = True
-            self.age[r, c] = 1
+            self.grid[r, c] = 1
 
     def set(self, coords, value):
         self.grid[coords] = value
