@@ -4,7 +4,7 @@ from enum import Enum
 class Seed(Enum):
     BLANK = {}
 
-    # Seed for a 'Gosper Glider Gun' in set form.
+    # Seed for a Gosper glider gun
     GOSPER = {(3, 22), (5, 17), (8, 16), (6,  2), (3, 35), (4, 16), (4, 36), (3, 14),
               (7, 25), (4, 22), (4, 21), (6, 18), (6,  1), (1, 25), (3, 36), (9, 13),
               (5,  2), (4, 35), (9, 14), (7, 17), (7, 11), (6, 17), (3, 13), (5, 11),
