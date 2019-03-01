@@ -41,7 +41,7 @@ class Grid(object):
         self.seed()
 
     def seed(self):
-        for c, r in SEED:
+        for r, c in SEED:
             self.grid[r, c] = 1
 
     def set(self, coords, value):
