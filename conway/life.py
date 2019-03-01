@@ -3,6 +3,7 @@ import sys
 
 import numpy as np
 import pygame as pg
+from itertools import product
 from scipy.signal import convolve2d
 from seeds import Seed
 
@@ -13,6 +14,8 @@ GRID_SIZE = (50, 100)
 CELL_MARGIN = 2
 BACKGROUND_COLOR = pg.Color('darkslategray')
 VISITED_COLOR = [min(chan + 20, 255) for chan in BACKGROUND_COLOR]
+GRID_COLOR = pg.Color('black')
+SHOW_GRID = True
 
 BIRTH = tuple({3})
 SURVIVE = tuple({2, 3})
@@ -81,10 +84,25 @@ class App(object):
         self.generating = False
         self.generation = 1
 
+        if SHOW_GRID:
+            self.draw_grid()
+
+    def draw_grid(self):
+        size = self.screen.get_size()
+
+        for r, c in product(range(1, GRID_SIZE[0]), range(1, GRID_SIZE[1])):
+            x = c * CELL_SIZE - CELL_MARGIN / 2
+            y = r * CELL_SIZE - CELL_MARGIN / 2
+            pg.draw.line(self.background, GRID_COLOR, (x, 0), (x, size[1]), CELL_MARGIN)
+            pg.draw.line(self.background, GRID_COLOR, (0, y), (size[0], y), CELL_MARGIN)
+
     def reset(self):
         self.background.fill(BACKGROUND_COLOR)
         self.grid.reset()
         self.generation = 1
+
+        if SHOW_GRID:
+            self.draw_grid()
 
     def event_loop(self):
         for event in pg.event.get():
