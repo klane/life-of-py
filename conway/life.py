@@ -41,8 +41,11 @@ class Grid(object):
         self.seed()
 
     def seed(self):
-        for r, c in SEED:
-            self.grid[r, c] = 1
+        if SEED is Seed.RANDOM:
+            self.grid = np.random.randint(2, size=GRID_SIZE, dtype=bool)
+        else:
+            for r, c in SEED:
+                self.grid[r, c] = 1
 
     def set(self, coords, value):
         self.grid[coords] = value
