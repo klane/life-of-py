@@ -14,6 +14,7 @@ GRID_SIZE = (50, 100)
 CELL_MARGIN = 2
 BACKGROUND_COLOR = pg.Color('darkslategray')
 VISITED_COLOR = [min(chan + 20, 255) for chan in BACKGROUND_COLOR]
+CELL_COLOR = pg.Color('tomato')
 GRID_COLOR = pg.Color('black')
 SHOW_GRID = True
 
@@ -24,14 +25,13 @@ SEED = Seed.GOSPER
 
 class Cell(object):
     def __init__(self, coords):
-        self.color = pg.Color('tomato')
         self.rect = pg.Rect((coords[0] * CELL_SIZE, coords[1] * CELL_SIZE),
                             (CELL_SIZE, CELL_SIZE))
         self.rect.inflate_ip(-CELL_MARGIN, -CELL_MARGIN)
         self.age = 0
 
     def draw(self, surface, background):
-        color = [min(chan + self.age, 255) for chan in self.color]
+        color = [min(chan + self.age, 255) for chan in CELL_COLOR]
         surface.fill(color, self.rect)
         background.fill(VISITED_COLOR, self.rect)
 
