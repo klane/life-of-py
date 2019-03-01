@@ -4,6 +4,7 @@ import sys
 import numpy as np
 import pygame as pg
 from scipy.signal import convolve2d
+from seeds import *
 
 CAPTION = "Conway"
 FPS = 30
@@ -15,13 +16,7 @@ VISITED_COLOR = [min(chan + 20, 255) for chan in BACKGROUND_COLOR]
 
 BIRTH = tuple({3})
 SURVIVE = tuple({2, 3})
-
-# Seed for a 'Gosper Glider Gun' in set form.
-SEED = {(22, 3), (17, 5), (16, 8), (2, 6), (35, 3), (16, 4), (36, 4), (14, 3),
-        (25, 7), (22, 4), (21, 4), (18, 6), (1, 6), (25, 1), (36, 3), (13, 9),
-        (2, 5), (35, 4), (14, 9), (17, 7), (11, 7), (17, 6), (13, 3), (11, 5),
-        (25, 6), (23, 2), (21, 3), (1, 5), (15, 6), (12, 4), (21, 5), (25, 2),
-        (22, 5), (23, 6), (11, 6), (12, 8)}
+SEED = GOSPER
 
 
 class Cell(object):
