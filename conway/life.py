@@ -88,12 +88,12 @@ class App(object):
 
     def event_loop(self):
         for event in pg.event.get():
-            if event.type == pg.QUIT:
+            if event.type is pg.QUIT:
                 self.done = True
-            elif event.type == pg.KEYDOWN:
-                if event.key == pg.K_SPACE:
+            elif event.type is pg.KEYDOWN:
+                if event.key is pg.K_SPACE:
                     self.generating = not self.generating
-                elif event.key == pg.K_BACKSPACE:
+                elif event.key is pg.K_BACKSPACE:
                     self.reset()
 
     def add_delete(self, mouse):
