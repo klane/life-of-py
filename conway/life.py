@@ -81,6 +81,7 @@ class App(object):
     def reset(self):
         self.background.fill(BACKGROUND_COLOR)
         self.grid.reset()
+        self.generation = 1
 
     def event_loop(self):
         for event in pg.event.get():
