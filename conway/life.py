@@ -93,6 +93,9 @@ class App(object):
             elif event.type is pg.KEYDOWN:
                 if event.key is pg.K_SPACE:
                     self.generating = not self.generating
+                elif event.key is pg.K_TAB:
+                    self.generating = False
+                    self.step()
                 elif event.key is pg.K_BACKSPACE:
                     self.reset()
 
