@@ -50,7 +50,6 @@ class App(object):
         self.screen = pg.display.get_surface()
         self.background = pg.Surface(self.screen.get_size())
         self.background.fill(BACKGROUND_COLOR)
-        self.fps = FPS
         self.clock = pg.time.Clock()
         self.done = False
         self.wrapping = True
@@ -125,7 +124,7 @@ class App(object):
             self.event_loop()
             self.update()
             self.render()
-            self.clock.tick(self.fps)
+            self.clock.tick(FPS)
 
 
 def main():
