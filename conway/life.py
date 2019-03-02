@@ -7,19 +7,6 @@ from scipy.signal import convolve2d
 from options import *
 
 
-class Cell(object):
-    def __init__(self, coords):
-        self.rect = pg.Rect((coords[0] * CELL_SIZE, coords[1] * CELL_SIZE),
-                            (CELL_SIZE, CELL_SIZE))
-        self.rect.inflate_ip(-CELL_MARGIN, -CELL_MARGIN)
-        self.age = 0
-
-    def draw(self, surface, background):
-        color = [min(chan + self.age, 255) for chan in CELL_COLOR]
-        surface.fill(color, self.rect)
-        background.fill(VISITED_COLOR, self.rect)
-
-
 class Grid(object):
     def __init__(self):
         self.kernel = np.asarray([[1, 1, 1], [1, 0, 1], [1, 1, 1]])
@@ -50,9 +37,11 @@ class Grid(object):
 
     def draw(self, surface, background):
         for r, c in zip(*self.grid.nonzero()):
-            cell = Cell((c, r))
-            cell.age = self.age[r, c]
-            cell.draw(surface, background)
+            rect = pg.Rect((c * CELL_SIZE, r * CELL_SIZE), (CELL_SIZE, CELL_SIZE))
+            rect.inflate_ip(-CELL_MARGIN, -CELL_MARGIN)
+            color = [min(chan + self.age[r, c], 255) for chan in CELL_COLOR]
+            surface.fill(color, rect)
+            background.fill(VISITED_COLOR, rect)
 
 
 class App(object):
