@@ -35,12 +35,12 @@ class Grid(object):
         self.age[self.grid] += 1
         self.age[np.logical_not(self.grid)] = 0
 
-    def draw(self, surface, background):
+    def draw(self, screen, background):
         for r, c in zip(*self.grid.nonzero()):
             rect = pg.Rect((c * CELL_SIZE, r * CELL_SIZE), (CELL_SIZE, CELL_SIZE))
             rect.inflate_ip(-CELL_MARGIN, -CELL_MARGIN)
             color = [min(chan + self.age[r, c], 255) for chan in CELL_COLOR]
-            surface.fill(color, rect)
+            screen.fill(color, rect)
             background.fill(VISITED_COLOR, rect)
 
 
