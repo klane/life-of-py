@@ -4,6 +4,7 @@ from seeds import Seed
 # App options
 CAPTION = 'Conway'
 FPS = 30
+WRAP = True
 
 # Simulation options
 BIRTH = tuple({3})  # number of neighbors for a cell to be born

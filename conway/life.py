@@ -30,7 +30,8 @@ class Grid(object):
         self.seed()
 
     def update(self):
-        neighbors = convolve2d(self.grid, self.kernel, mode='same', boundary='wrap')
+        boundary = 'wrap' if WRAP else 'fill'
+        neighbors = convolve2d(self.grid, self.kernel, mode='same', boundary=boundary)
         self.grid = (np.isin(neighbors, SURVIVE) & self.grid) | np.isin(neighbors, BIRTH)
         self.age[self.grid] += 1
         self.age[np.logical_not(self.grid)] = 0
@@ -53,7 +54,6 @@ class App(object):
         self.grid = Grid()
         self.clock = pg.time.Clock()
         self.done = False
-        self.wrapping = True
         self.generating = False
         self.generation = 1
 
