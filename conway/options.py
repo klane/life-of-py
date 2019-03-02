@@ -22,4 +22,4 @@ SHOW_GRID = True
 CELL_COLOR = pg.Color('tomato')
 GRID_COLOR = pg.Color('black')
 BACKGROUND_COLOR = pg.Color('darkslategray')
-VISITED_COLOR = [min(chan + 20, 255) for chan in BACKGROUND_COLOR]
+VISITED_COLOR = [min(chan + 25, 255) for chan in BACKGROUND_COLOR]
