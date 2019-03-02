@@ -74,9 +74,9 @@ class App(object):
     def draw_grid(self):
         size = self.screen.get_size()
 
-        for r, c in product(range(1, GRID_SIZE[0]), range(1, GRID_SIZE[1])):
-            x = c * CELL_SIZE - CELL_MARGIN / 2
-            y = r * CELL_SIZE - CELL_MARGIN / 2
+        for r, c in product(range(GRID_SIZE[0]+1), range(GRID_SIZE[1]+1)):
+            x = c * CELL_SIZE - CELL_MARGIN / 4
+            y = r * CELL_SIZE - CELL_MARGIN / 4
             pg.draw.line(self.background, GRID_COLOR, (x, 0), (x, size[1]), CELL_MARGIN)
             pg.draw.line(self.background, GRID_COLOR, (0, y), (size[0], y), CELL_MARGIN)
 
