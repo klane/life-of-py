@@ -47,11 +47,10 @@ class Grid(object):
 class App(object):
     def __init__(self):
         self.size = GRID_SIZE[1] * CELL_SIZE, GRID_SIZE[0] * CELL_SIZE
-        pg.display.set_mode(self.size)
-        self.grid = Grid()
-        self.screen = pg.display.get_surface()
+        self.screen = pg.display.set_mode(self.size)
         self.background = pg.Surface(self.size)
         self.background.fill(BACKGROUND_COLOR)
+        self.grid = Grid()
         self.clock = pg.time.Clock()
         self.done = False
         self.wrapping = True
