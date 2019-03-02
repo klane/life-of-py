@@ -2,25 +2,9 @@ import os
 import sys
 
 import numpy as np
-import pygame as pg
 from itertools import product
 from scipy.signal import convolve2d
-from seeds import Seed
-
-CAPTION = 'Conway'
-FPS = 30
-CELL_SIZE = 12
-GRID_SIZE = (50, 100)
-CELL_MARGIN = 2
-BACKGROUND_COLOR = pg.Color('darkslategray')
-VISITED_COLOR = [min(chan + 20, 255) for chan in BACKGROUND_COLOR]
-CELL_COLOR = pg.Color('tomato')
-GRID_COLOR = pg.Color('black')
-SHOW_GRID = True
-
-BIRTH = tuple({3})
-SURVIVE = tuple({2, 3})
-SEED = Seed.GOSPER
+from options import *
 
 
 class Cell(object):
