@@ -46,9 +46,11 @@ class Grid(object):
 
 class App(object):
     def __init__(self):
+        self.size = GRID_SIZE[1] * CELL_SIZE, GRID_SIZE[0] * CELL_SIZE
+        pg.display.set_mode(self.size)
         self.grid = Grid()
         self.screen = pg.display.get_surface()
-        self.background = pg.Surface(self.screen.get_size())
+        self.background = pg.Surface(self.size)
         self.background.fill(BACKGROUND_COLOR)
         self.clock = pg.time.Clock()
         self.done = False
@@ -60,13 +62,11 @@ class App(object):
             self.draw_grid()
 
     def draw_grid(self):
-        size = self.screen.get_size()
-
         for r, c in product(range(GRID_SIZE[0]+1), range(GRID_SIZE[1]+1)):
             x = c * CELL_SIZE - CELL_MARGIN / 4
             y = r * CELL_SIZE - CELL_MARGIN / 4
-            pg.draw.line(self.background, GRID_COLOR, (x, 0), (x, size[1]), CELL_MARGIN)
-            pg.draw.line(self.background, GRID_COLOR, (0, y), (size[0], y), CELL_MARGIN)
+            pg.draw.line(self.background, GRID_COLOR, (x, 0), (x, self.size[1]), CELL_MARGIN)
+            pg.draw.line(self.background, GRID_COLOR, (0, y), (self.size[0], y), CELL_MARGIN)
 
     def reset(self):
         self.background.fill(BACKGROUND_COLOR)
@@ -130,8 +130,6 @@ class App(object):
 def main():
     os.environ['SDL_VIDEO_CENTERED'] = 'True'
     pg.init()
-    size = GRID_SIZE[1] * CELL_SIZE, GRID_SIZE[0] * CELL_SIZE
-    pg.display.set_mode(size)
     App().start()
     pg.quit()
     sys.exit()
