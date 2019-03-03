@@ -12,14 +12,24 @@ class Grid(object):
         self.kernel = np.asarray([[1, 1, 1], [1, 0, 1], [1, 1, 1]])
         self.grid = np.zeros(GRID_SIZE, dtype=bool)
         self.age = np.zeros(GRID_SIZE, dtype=int)
+        self.padding = 0 if WRAP else 100
+
+        if not WRAP:
+            self.grid = np.pad(self.grid, self.padding, 'constant')
+
         self.seed()
 
     def seed(self):
         if SEED is Seed.RANDOM:
-            self.grid = np.random.randint(2, size=GRID_SIZE, dtype=bool)
+            rand = np.random.randint(2, size=GRID_SIZE, dtype=bool)
+
+            if WRAP:
+                self.grid = rand
+            else:
+                self.grid[self.padding:-self.padding, self.padding:-self.padding] = rand
         else:
             for r, c in SEED:
-                self.grid[r, c] = 1
+                self.grid[r + self.padding, c + self.padding] = 1
 
     def set(self, coords, value):
         self.grid[coords] = value
@@ -33,11 +43,18 @@ class Grid(object):
         boundary = 'wrap' if WRAP else 'fill'
         neighbors = convolve2d(self.grid, self.kernel, mode='same', boundary=boundary)
         self.grid = (np.isin(neighbors, SURVIVE) & self.grid) | np.isin(neighbors, BIRTH)
-        self.age[self.grid] += 1
-        self.age[np.logical_not(self.grid)] = 0
+        sub = self.unpad()
+        self.age[sub] += 1
+        self.age[np.logical_not(sub)] = 0
+
+    def unpad(self):
+        if WRAP:
+            return self.grid
+        else:
+            return self.grid[self.padding:-self.padding, self.padding:-self.padding]
 
     def draw(self, screen, background):
-        for r, c in zip(*self.grid.nonzero()):
+        for r, c in zip(*self.unpad().nonzero()):
             rect = pg.Rect(c * CELL_SIZE, r * CELL_SIZE, CELL_SIZE, CELL_SIZE)
             rect.inflate_ip(-CELL_MARGIN, -CELL_MARGIN)
             color = [min(chan + self.age[r, c], 255) for chan in CELL_COLOR]
