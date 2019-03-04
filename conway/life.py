@@ -32,7 +32,7 @@ class Grid(object):
                 self.grid[r + self.padding, c + self.padding] = 1
 
     def set(self, coords, value):
-        self.grid[coords] = value
+        self.grid[tuple([c + self.padding for c in coords])] = value
 
     def reset(self):
         self.grid.fill(0)
