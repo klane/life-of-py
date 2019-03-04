@@ -1,6 +1,5 @@
 import os
 import sys
-
 import numpy as np
 from itertools import product
 from scipy.signal import convolve2d
@@ -9,9 +8,9 @@ from options import *
 
 class Grid(object):
     def __init__(self):
-        self.kernel = np.asarray([[1, 1, 1], [1, 0, 1], [1, 1, 1]])
         self.grid = np.zeros(GRID_SIZE, dtype=bool)
         self.age = np.zeros(GRID_SIZE, dtype=int)
+        self.kernel = np.asarray([[1, 1, 1], [1, 0, 1], [1, 1, 1]])
         self.padding = 0 if WRAP else 100
 
         if not WRAP:
