@@ -1,8 +1,8 @@
 # Conway's Game of Life
 
-![screenshot](https://raw.githubusercontent.com/klane/life-of-py/master/assets/gosper-generation-100.png)
+![screenshot](https://raw.githubusercontent.com/klane/life-of-py/master/assets/gosper.gif)
 
-Generation 100 of a simulation seeded with the Gosper glider gun.
+First 180 generations of Conway's Game of Life seeded with the Gosper glider gun.
 
 This project contains a Python implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) using [Pygame](https://www.pygame.org/). The number of each cell's neighbors are found using convolution with the kernel:
 
