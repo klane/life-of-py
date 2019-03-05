@@ -12,7 +12,7 @@ This project contains a Python implementation of [Conway's Game of Life](https:/
  1, 1, 1]
 ```
 
-For every generation a cell survives, each channel in its color gets incremented until it reaches 255.
+For every generation a cell survives, each channel in its color gets incremented until it reaches 255. Visited cells are set to a different color to illustrate the path the population has taken.
 
 This work drew inspiration from [this project](https://github.com/Mekire/Conway-User-Interaction).
 
