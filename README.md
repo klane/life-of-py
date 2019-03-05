@@ -21,3 +21,5 @@ This work drew inspiration from [this project](https://github.com/Mekire/Conway-
 - SPACE: Start/stop simulation
 - TAB: Step to next generation (stops simulation if currently running)
 - BACKSPACE: Reset simulation
+- LEFT MOUSE: Give life to selected cell
+- RIGHT MOUSE: Kill selected cell
