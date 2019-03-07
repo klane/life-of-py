@@ -1,4 +1,6 @@
+import numpy as np
 from enum import Enum
+from functools import partial
 
 
 class Seed(Enum):
@@ -26,7 +28,10 @@ class Seed(Enum):
               (11, 9), (12, 9), (14, 10), (14, 11), (14, 12), (10, 14), (11, 14), (12, 14)}
 
     # Random seed with discrete uniform distribution
-    RANDOM = None
+    RANDOM = partial(np.random.randint, 2, dtype=bool)
+
+    def __call__(self, *args, **kwargs):
+        return self.value(*args, **kwargs)
 
     def __iter__(self):
         return self.value.__iter__()

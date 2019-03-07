@@ -19,13 +19,13 @@ class Grid(object):
         self.seed()
 
     def seed(self):
-        if SEED is Seed.RANDOM:
-            rand = np.random.randint(2, size=GRID_SIZE, dtype=bool)
+        if callable(SEED.value):
+            seed = SEED(size=GRID_SIZE)
 
             if WRAP:
-                self.grid = rand
+                self.grid = seed
             else:
-                self.grid[self.padding:-self.padding, self.padding:-self.padding] = rand
+                self.grid[self.padding:-self.padding, self.padding:-self.padding] = seed
         else:
             for r, c in SEED:
                 self.grid[r + self.padding, c + self.padding] = 1
