@@ -10,7 +10,7 @@ class Grid(object):
     def __init__(self):
         self.grid = np.zeros(GRID_SIZE, dtype=bool)
         self.age = np.zeros(GRID_SIZE, dtype=int)
-        self.kernel = np.asarray([[1, 1, 1], [1, 0, 1], [1, 1, 1]])
+        self.kernel = np.array([[1, 1, 1], [1, 0, 1], [1, 1, 1]])
         self.padding = 0 if WRAP else 100
 
         if not WRAP:
