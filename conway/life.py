@@ -3,7 +3,7 @@ import sys
 import numpy as np
 from itertools import product
 from scipy.signal import convolve2d
-from options import *
+from conway.options import *
 
 
 class Grid(object):

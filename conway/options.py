@@ -1,5 +1,5 @@
 import pygame as pg
-from seeds import Seed
+from conway.seeds import Seed
 
 # App options
 CAPTION = 'Conway'
