@@ -30,6 +30,9 @@ class Seed(Enum):
     # Random seed with discrete uniform distribution
     RANDOM = partial(np.random.randint, 2, dtype=bool)
 
+    # Random seed with 25% probability of starting alive
+    RANDOM_25 = partial(np.random.choice, [True, False], p=[0.25, 0.75])
+
     def __call__(self, *args, **kwargs):
         return self.value(*args, **kwargs)
 
