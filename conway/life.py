@@ -1,8 +1,10 @@
 import os
 import sys
-import numpy as np
 from itertools import product
+
+import numpy as np
 from scipy.signal import convolve2d
+
 from conway.options import *
 
 

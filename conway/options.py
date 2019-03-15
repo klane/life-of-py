@@ -1,4 +1,5 @@
 import pygame as pg
+
 from conway.seeds import Seed
 
 # App options

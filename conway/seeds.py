@@ -1,6 +1,7 @@
-import numpy as np
 from enum import Enum
 from functools import partial
+
+import numpy as np
 
 
 class Seed(Enum):
