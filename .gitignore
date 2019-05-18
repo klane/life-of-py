@@ -1,5 +1,2 @@
 # Local virtual environment
 .venv/
-
-# PyCharm
-.idea/
