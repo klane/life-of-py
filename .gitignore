@@ -1,2 +1,8 @@
 # Local virtual environment
 .venv/
+
+# Python byte code
+*.pyc
+
+# pyenv version file
+.python-version
